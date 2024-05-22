@@ -10,6 +10,7 @@ const durationProgress = document.querySelector('#durationProgress');
 const btnPlayPause = document.querySelector('#btnPlayPause');
 const btnStop = document.querySelector('#btnStop');
 const timeDuration = document.querySelector('#timeDuration');
+const currentTimeDuration = document.querySelector('#currentTimeDuration');
 let duration = 0;
 myFile.addEventListener('change', selectSong);
 function selectSong(e) {
@@ -42,6 +43,7 @@ function musicDurationControl() {
     });
     duration = setInterval(() => {
         durationProgress.value = `${(audioSongSrc.currentTime).toFixed(0)}`;
+        currentTimeDuration.textContent = `${(audioSongSrc.currentTime).toFixed(0)}`;
     }, 1000);
     // console.log(duration, "Po");
 }
