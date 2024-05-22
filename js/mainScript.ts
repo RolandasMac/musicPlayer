@@ -7,7 +7,10 @@ const myVideo = document.querySelector('#myVideo') as HTMLInputElement;
 const vol = document.querySelector('#vol') as HTMLInputElement;
 const musicVol = document.querySelector('#musicVol') as HTMLInputElement;
 const durationProgress = document.querySelector('#durationProgress') as HTMLInputElement;
-
+const btnPlayPause = document.querySelector('#btnPlayPause') as HTMLButtonElement;
+const btnStop = document.querySelector('#btnStop') as HTMLButtonElement;
+const timeDuration = document.querySelector('#timeDuration') as HTMLInputElement;
+let duration:number = 0;
 
 myFile.addEventListener('change', selectSong);
 
@@ -23,6 +26,7 @@ function selectSong(e:Event):void{
     musicVolumeControl();
     musicDurationControl();
     btnPlayPause.textContent = "⏸";
+
 }
 
 function musicVolumeControl(){
@@ -34,30 +38,36 @@ function musicVolumeControl(){
 }
 
 function musicDurationControl(){
-    let duration = setInterval(()=>{
-        durationProgress.max = `${audioSongSrc.duration}`
-        durationProgress.value = `${(audioSongSrc.currentTime).toFixed(0)}`
-        // console.log((audioSongSrc.currentTime).toFixed(0));
-    },1000)
+    // console.log(duration, "Prieš");
+    clearInterval(duration);
+    audioSongSrc.addEventListener('loadeddata', (e) => {
+        // alert("Veikia!")
+        timeDuration.textContent = `${(audioSongSrc.duration).toFixed(0)}`;
+        durationProgress.max = `${(audioSongSrc.duration).toFixed(0)}`;
+    })
 
+    duration = setInterval(()=>{
+        durationProgress.value = `${(audioSongSrc.currentTime).toFixed(0)}`;
+    },1000);
+    // console.log(duration, "Po");
 }
 
-
-const btnPlayPause = document.querySelector('#btnPlayPause') as HTMLButtonElement;
 btnPlayPause.addEventListener('click', (e) => {
     if(audioSongSrc.paused){
         audioSongSrc.play();
         btnPlayPause.textContent = "⏸";
+        musicDurationControl();
     }else{
         audioSongSrc.pause();
         btnPlayPause.textContent = "▶️"
     }
 });
-const btnStop = document.querySelector('#btnStop') as HTMLButtonElement;
+
 btnStop.addEventListener('click', (e) => {
     audioSongSrc.pause();
     audioSongSrc.currentTime = 0;
-    btnPlayPause.textContent = "▶️"
+    btnPlayPause.textContent = "▶️";
+    clearInterval(duration);
 });
 
 

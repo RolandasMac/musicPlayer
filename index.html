@@ -24,9 +24,13 @@
                     <label for="myfile">🎵</label>
                     <input type="file" id="myfile" name="myfile" class="d-none">
                 </form>
-                <label for="musicVol">🔊</label>
-                <input type="range" id="musicVol" name="vol" min="0" max="100" value="0" >
+                <div class="volumeControl">
+                    <label for="musicVol">🔊</label>
+                    <input type="range" id="musicVol" name="vol" min="0" max="100" value="0" >
+                </div>
+
                 <progress id="durationProgress" value="0" max="100"></progress>
+                <span id="timeDuration">0</span>
                 <span id="btnPlayPause">▶️</span>
                 <span id="btnStop">⏹</span>
             </div>

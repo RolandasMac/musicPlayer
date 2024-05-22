@@ -7,6 +7,10 @@ const myVideo = document.querySelector('#myVideo');
 const vol = document.querySelector('#vol');
 const musicVol = document.querySelector('#musicVol');
 const durationProgress = document.querySelector('#durationProgress');
+const btnPlayPause = document.querySelector('#btnPlayPause');
+const btnStop = document.querySelector('#btnStop');
+const timeDuration = document.querySelector('#timeDuration');
+let duration = 0;
 myFile.addEventListener('change', selectSong);
 function selectSong(e) {
     e.preventDefault();
@@ -29,28 +33,34 @@ function musicVolumeControl() {
     });
 }
 function musicDurationControl() {
-    let duration = setInterval(() => {
-        durationProgress.max = `${audioSongSrc.duration}`;
+    // console.log(duration, "Prieš");
+    clearInterval(duration);
+    audioSongSrc.addEventListener('loadeddata', (e) => {
+        // alert("Veikia!")
+        timeDuration.textContent = `${(audioSongSrc.duration).toFixed(0)}`;
+        durationProgress.max = `${(audioSongSrc.duration).toFixed(0)}`;
+    });
+    duration = setInterval(() => {
         durationProgress.value = `${(audioSongSrc.currentTime).toFixed(0)}`;
-        // console.log((audioSongSrc.currentTime).toFixed(0));
     }, 1000);
+    // console.log(duration, "Po");
 }
-const btnPlayPause = document.querySelector('#btnPlayPause');
 btnPlayPause.addEventListener('click', (e) => {
     if (audioSongSrc.paused) {
         audioSongSrc.play();
         btnPlayPause.textContent = "⏸";
+        musicDurationControl();
     }
     else {
         audioSongSrc.pause();
         btnPlayPause.textContent = "▶️";
     }
 });
-const btnStop = document.querySelector('#btnStop');
 btnStop.addEventListener('click', (e) => {
     audioSongSrc.pause();
     audioSongSrc.currentTime = 0;
     btnPlayPause.textContent = "▶️";
+    clearInterval(duration);
 });
 // myVideo.addEventListener('change', selectVideo);
 //
