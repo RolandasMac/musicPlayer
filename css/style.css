@@ -1,0 +1,13 @@
+h1 {
+  color: red;
+}
+
+.container {
+  height: 100vh;
+  background-image: url("https://img.freepik.com/premium-vector/seamless-white-gray-geometric-texture-smooth-design-vector-decorative-background_547648-2158.jpg?w=826");
+}
+.container .player {
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=style.css.map */

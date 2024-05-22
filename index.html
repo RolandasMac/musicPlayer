@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>13_1</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/mainScript.js" defer></script>
+</head>
+<body>
+    <h1 class="text-center">2024-05-20</h1>
+    <div class="container">
+        <div class="player d-flex gap-2 p-3">
+            <audio autoplay>
+<!--                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/ogg">-->
+                <source src="" type="audio/mpeg">
+
+            </audio>
+            <div class="toolBars d-flex align-items-center gap-4">
+                <form action="">
+                    <label for="myfile">🎵</label>
+                    <input type="file" id="myfile" name="myfile" class="d-none">
+                </form>
+                <label for="musicVol">🔊</label>
+                <input type="range" id="musicVol" name="vol" min="0" max="100" value="0" >
+                <progress id="durationProgress" value="0" max="100"></progress>
+                <span id="btnPlayPause">▶️</span>
+                <span id="btnStop">⏹</span>
+            </div>
+        </div>
+<!--        <div class="videoPlayer d-flex gap-2 p-3">-->
+<!--            <video width="320" height="240" autoplay>-->
+<!--&lt;!&ndash;        <video controls >&ndash;&gt;-->
+<!--                <source src="" type="video/mp4">-->
+<!--&lt;!&ndash;                <source src="" type="video/.mkv">&ndash;&gt;-->
+<!--            </video>-->
+
+
+<!--        </div>-->
+<!--        <div class="toolBars d-flex align-items-center gap-4">-->
+<!--            <form action="">-->
+<!--                <label for="myVideo">🎵</label>-->
+<!--                <input type="file" id="myVideo" name="myfile" class="d-none">-->
+<!--            </form>-->
+<!--            <label for="vol">🔊</label>-->
+<!--            <input type="range" id="vol" name="vol" min="0" max="100" value="0" >-->
+<!--        </div>-->
+
+    </div>
+</body>
+</html>
